@@ -1,14 +1,36 @@
 package lk.akeladumindu.lms.entity;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Book {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "book_id")
     private long id;
 
     private String title;
 
+
+    //*********************mapping******************************
+    @ManyToOne
+    @JoinColumn(
+            name = "student_id"
+    )
+    private Student student;
+
+
+// *********************mapping******************************
+
+    public Book() {
+    }
+
+    public Book(long id, String title) {
+        this.id = id;
+        this.title = title;
+    }
     public long getId() {
         return id;
     }
@@ -25,11 +47,13 @@ public class Book {
         this.title = title;
     }
 
-    public Book() {
+
+
+    public Student getStudent() {
+        return student;
     }
 
-    public Book(long id, String title) {
-        this.id = id;
-        this.title = title;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }

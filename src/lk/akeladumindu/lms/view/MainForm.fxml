@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="860.0" prefWidth="1528.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.akeladumindu.lms.Controller.MainFormController">
    <children>
       <AnchorPane layoutY="7.0" prefHeight="426.0" prefWidth="759.0" style="-fx-background-color: #808a8d;">
@@ -19,17 +18,17 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <TextField layoutX="14.0" layoutY="65.0" prefHeight="39.0" prefWidth="185.0" promptText="Student Name">
+            <TextField fx:id="txtname" layoutX="14.0" layoutY="65.0" prefHeight="39.0" prefWidth="185.0" promptText="Student Name">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </TextField>
-            <TextField layoutX="226.0" layoutY="65.0" prefHeight="39.0" prefWidth="179.0" promptText="Contact Number">
+            <TextField fx:id="txtContact" layoutX="226.0" layoutY="65.0" prefHeight="39.0" prefWidth="179.0" promptText="Contact Number">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </TextField>
-            <Button layoutX="436.0" layoutY="65.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="121.0" text="Save Student">
+            <Button layoutX="436.0" layoutY="65.0" mnemonicParsing="false" onAction="#onActionSaveStudent" prefHeight="39.0" prefWidth="121.0" text="Save Student">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

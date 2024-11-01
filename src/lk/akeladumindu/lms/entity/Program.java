@@ -1,15 +1,35 @@
 package lk.akeladumindu.lms.entity;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Program {
 
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "program_id")
     private long id;
 
     private String title;
 
     private int credit;
+
+    //*********************mapping******************************
+    @ManyToMany
+    @JoinTable(name = "registration", joinColumns = @JoinColumn(name = "program_id"),inverseJoinColumns = @JoinColumn(name = "student_id"))
+    private List<Student> students = new ArrayList<>();
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+// *********************mapping******************************
+
 
     public long getId() {
         return id;

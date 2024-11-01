@@ -1,16 +1,60 @@
 package lk.akeladumindu.lms.entity;
 
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Student {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "student_id")
     private long id;
 
     private String name;
 
     private String contact;
+
+//*********************mapping******************************
+    @OneToOne(cascade = CascadeType.ALL,
+            mappedBy = "student",
+            fetch = FetchType.EAGER)
+    private Laptop laptop;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "student", fetch = FetchType.EAGER)
+    private List<Book> books = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "students")
+    private List<Program> programs = new ArrayList<>();
+
+    public List<Program> getPrograms() {
+        return programs;
+    }
+
+    public void setPrograms(List<Program> programs) {
+        this.programs = programs;
+    }
+
+    // *********************mapping******************************
+    public Laptop getLaptop() {
+        return laptop;
+    }
+
+    public void setLaptop(Laptop laptop) {
+        this.laptop = laptop;
+    }
+
+
+    public Student() {
+    }
+
+    public Student(long id, String name, String contact) {
+        this.id = id;
+        this.name = name;
+        this.contact = contact;
+    }
 
     public long getId() {
         return id;
@@ -36,12 +80,12 @@ public class Student {
         this.contact = contact;
     }
 
-    public Student() {
+
+    public List<Book> getBooks() {
+        return books;
     }
 
-    public Student(long id, String name, String contact) {
-        this.id = id;
-        this.name = name;
-        this.contact = contact;
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }
