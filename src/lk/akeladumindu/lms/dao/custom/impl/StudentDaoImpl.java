@@ -2,15 +2,21 @@ package lk.akeladumindu.lms.dao.custom.impl;
 
 import lk.akeladumindu.lms.dao.custom.StudentDao;
 import lk.akeladumindu.lms.entity.Student;
+import lk.akeladumindu.lms.util.HibernateUtil;
+import org.hibernate.Session;
 
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 
-public class StudentImpl implements StudentDao {
+public class StudentDaoImpl implements StudentDao {
     @Override
     public void save(Student student) throws SQLException, ClassNotFoundException {
-
+        try(Session session = HibernateUtil.getInstance().getSession()){
+            session.beginTransaction();
+            session.save(student);
+            session.getTransaction().commit();
+        }
     }
 
     @Override
