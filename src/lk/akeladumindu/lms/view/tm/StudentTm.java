@@ -10,6 +10,9 @@ public class StudentTm {
     Button deleteBtn;
     Button seeMoreBtn;
 
+    public StudentTm(long id, String name, String contact, javafx.scene.control.Button deleteButton, javafx.scene.control.Button seeMorButton) {
+    }
+
     public long getId() {
         return id;
     }

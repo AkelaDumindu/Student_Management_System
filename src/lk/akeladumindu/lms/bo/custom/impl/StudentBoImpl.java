@@ -34,5 +34,9 @@ public class StudentBoImpl {
         return dtos;
     }
 
+    public void deleteStudentId(long id) throws SQLException, ClassNotFoundException {
+        studentDao.delete(id);
+    }
+
 
 }
