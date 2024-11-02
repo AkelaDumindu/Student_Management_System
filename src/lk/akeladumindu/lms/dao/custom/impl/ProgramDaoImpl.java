@@ -2,6 +2,8 @@ package lk.akeladumindu.lms.dao.custom.impl;
 
 import lk.akeladumindu.lms.dao.custom.ProgramDao;
 import lk.akeladumindu.lms.entity.Program;
+import lk.akeladumindu.lms.entity.Registration;
+import lk.akeladumindu.lms.entity.Student;
 import lk.akeladumindu.lms.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -9,6 +11,7 @@ import org.hibernate.query.Query;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 public class ProgramDaoImpl implements ProgramDao {
@@ -59,5 +62,33 @@ public class ProgramDaoImpl implements ProgramDao {
             }
         }
         return list;
+    }
+
+    @Override
+    public void register(long studentId, long programId) {
+        try(Session session = HibernateUtil.getInstance().openSession()){
+            Query<Student> query = session.createQuery("FROM Student WHERE student_id=:sId", Student.class);
+
+            query.setParameter("sId", studentId);
+            Student student = query.uniqueResult();
+            if (student == null) {
+                throw new RuntimeException("Student not found");
+            }
+            //-----------------------------
+            Query<Program> pQuery =
+                    session.createQuery("FROM Program WHERE program_id=:pId", Program.class);
+            pQuery.setParameter("pId", programId);
+            Program program = pQuery.uniqueResult();
+            if (program == null) {
+                throw new RuntimeException("program not found");
+            }
+            session.beginTransaction();
+            Registration registration = new Registration();
+            registration.setProgram(program);
+            registration.setStudent(student);
+            registration.setRegDate(new Date());
+            session.save(registration);
+            session.getTransaction().commit();
+        }
     }
 }

@@ -45,7 +45,7 @@ public class MainFormController {
     public TableColumn colLapId;
     public TableColumn colLapName;
     public TableColumn colLapDelete;
-    public ComboBox cmdStudent;
+    public ComboBox<Long> cmdStudent;
     public TextField txtLapSearch;
     public TextField txtProgramName;
     public TextField txtCredit;
@@ -57,8 +57,8 @@ public class MainFormController {
     public TableColumn colDate;
     public TableColumn colStudent;
     public TableColumn colProgram;
-    public ComboBox cmdReStudent;
-    public ComboBox cmdReProgram;
+    public ComboBox<Long> cmdReStudent;
+    public ComboBox<Long> cmdReProgram;
 
 //    private StudentTm selectedStudentTm;
 
@@ -91,6 +91,8 @@ public class MainFormController {
 
             }
 
+            //to load student for select in combo field
+
     private void loadAllStudentsForLaptopSection() throws SQLException, ClassNotFoundException {
         ObservableList<Long> obList = FXCollections.observableArrayList();
         for (StudentDto dto:studentBo.findAllStudent()
@@ -101,6 +103,8 @@ public class MainFormController {
 
         cmdReStudent.setItems(obList);
     }
+
+    //to load programs for selection in combo field
     private void loadProgramsForRegistrationSection() throws SQLException, ClassNotFoundException {
         ObservableList<Long> obList = FXCollections.observableArrayList(
                 ProgramBo.findAllStudentIds()
@@ -232,8 +236,24 @@ public class MainFormController {
     }
 
     public void saveRegisterOnAction(ActionEvent actionEvent) {
+        try {
+            ProgramBo.register(
+                    cmdStudent.getValue(),
+                    cmdReProgram.getValue()
+            );
+            new Alert(Alert.AlertType.INFORMATION, "Registered").show();
+            loadAllRegistrations();
+        } catch (Exception e) {
+            System.out.println(e);
+            new Alert(Alert.AlertType.ERROR, "Try Again").show();
+        }
+    }
+
+    private void loadAllRegistrations() {
     }
 }
+
+
 
 
 
