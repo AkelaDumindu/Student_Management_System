@@ -6,6 +6,8 @@ import lk.akeladumindu.lms.dto.StudentDto;
 import lk.akeladumindu.lms.entity.Student;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StudentBoImpl {
 
@@ -17,6 +19,19 @@ public class StudentBoImpl {
         student.setContact(dto.getContact());
         studentDao.save(student);
 
+    }
+
+    public List<StudentDto> findAllStudents() throws SQLException, ClassNotFoundException {
+        ArrayList<StudentDto> dtos = new ArrayList<>();
+        for (Student s:studentDao.findAll()){
+            StudentDto dto = new StudentDto(
+                    s.getId(),s.getName(),s.getContact()
+            );
+            dto.setBooks(s.getBooks());
+            dto.setLaptop(s.getLaptop());
+            dtos.add(dto);
+        }
+        return dtos;
     }
 
 

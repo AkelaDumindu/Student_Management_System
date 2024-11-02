@@ -7,6 +7,8 @@ import lk.akeladumindu.lms.bo.BoFactory;
 import lk.akeladumindu.lms.bo.custom.StudentBo;
 import lk.akeladumindu.lms.dto.StudentDto;
 
+import java.sql.SQLException;
+
 public class MainFormController {
 
 
@@ -14,7 +16,16 @@ public class MainFormController {
     public TextField txtContact;
 
 //    private final StudentBo studentBo = BoFactory.getInstance().getBo(BoFactory.BoType.STUDENT);
-    private final StudentBo studentBo = BoFactory.getInstance().getBo(BoFactory.BoType.STUDENT);
+            private final StudentBo studentBo = BoFactory.getInstance().getBo(BoFactory.BoType.STUDENT);
+
+
+            public void initialize() throws SQLException, ClassNotFoundException {
+                loadAllStudents();
+            }
+
+    private void loadAllStudents() throws SQLException, ClassNotFoundException {
+        System.out.println(studentBo.findAllStudent());
+    }
 
 
     public void onActionSaveStudent(ActionEvent actionEvent) {

@@ -45,9 +45,16 @@ public class HibernateUtil {
     }
 
 
-    public Session getSession() {
+//    public Session getSession() {
+//        return sessionFactory.openSession();
+//    }
+
+
+    public Session openSession() {
         return sessionFactory.openSession();
     }
 
-
+    public Session getSession() {
+        return sessionFactory.openSession();
+    }
 }

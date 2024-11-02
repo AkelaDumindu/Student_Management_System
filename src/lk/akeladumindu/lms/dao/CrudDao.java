@@ -13,6 +13,6 @@ public interface CrudDao<T, ID> {
 
     public void delete(ID id) throws SQLException, ClassNotFoundException;
 
-    public List<T> findAll(T t) throws SQLException, ClassNotFoundException;
+    public List<T> findAll() throws SQLException, ClassNotFoundException;
 
 }
