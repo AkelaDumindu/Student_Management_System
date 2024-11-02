@@ -1,6 +1,7 @@
 package lk.akeladumindu.lms.dao;
 
 import lk.akeladumindu.lms.dao.custom.impl.LaptopDaoImpl;
+import lk.akeladumindu.lms.dao.custom.impl.ProgramDaoImpl;
 import lk.akeladumindu.lms.dao.custom.impl.StudentDaoImpl;
 
 public class DaoFactory {
@@ -26,7 +27,7 @@ public class DaoFactory {
            case LAPTOP:
                return (T) new LaptopDaoImpl();
            case PROGRAM:
-               return null;
+               return (T) new ProgramDaoImpl();
            default:
                return null;
        }

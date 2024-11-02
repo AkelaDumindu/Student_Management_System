@@ -8,8 +8,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.akeladumindu.lms.bo.BoFactory;
 import lk.akeladumindu.lms.bo.custom.LaptopBo;
+import lk.akeladumindu.lms.bo.custom.ProgramBo;
 import lk.akeladumindu.lms.bo.custom.StudentBo;
 import lk.akeladumindu.lms.dto.CreateLaptopDto;
+import lk.akeladumindu.lms.dto.ProgramDto;
 import lk.akeladumindu.lms.dto.StudentDto;
 import lk.akeladumindu.lms.view.tm.StudentTm;
 import java.util.Optional;
@@ -45,6 +47,10 @@ public class MainFormController {
     public TableColumn colLapDelete;
     public ComboBox cmdStudent;
     public TextField txtLapSearch;
+    public TextField txtProgramName;
+    public TextField txtCredit;
+    public TextField txtProgramSearch;
+    public TableView tblStudent1;
 
 //    private StudentTm selectedStudentTm;
 
@@ -182,6 +188,29 @@ public class MainFormController {
     }
 
     private void loadAllLaptops() {
+        //imlementation
+    }
+
+    public void saveProgramOnAction(ActionEvent actionEvent) {
+        try {
+            ProgramBo.saveProgram(
+                    new ProgramDto(
+                            txtProgramName.getText(),
+                            Integer.parseInt(txtCredit.getText())
+                    )
+            );
+            new Alert(Alert.AlertType.INFORMATION, "Program Saved").show();
+            loadAllPrograms();
+        } catch (Exception e) {
+            System.out.println(e);
+            new Alert(Alert.AlertType.ERROR, "Try Again").show();
+        }
+    }
+
+    private void loadAllPrograms() {
+    }
+
+    public void newProgramOnAction(ActionEvent actionEvent) {
     }
 }
 

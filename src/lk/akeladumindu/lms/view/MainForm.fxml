@@ -29,7 +29,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </TextField>
-            <Button layoutX="436.0" layoutY="65.0" mnemonicParsing="false" onAction="#btnStudentSave" prefHeight="39.0" prefWidth="121.0" text="Save Student">
+            <Button layoutX="441.0" layoutY="65.0" mnemonicParsing="false" onAction="#btnStudentSave" prefHeight="39.0" prefWidth="121.0" text="Save Student">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -97,7 +97,53 @@
                </children>
             </AnchorPane>
          </children></AnchorPane>
-      <AnchorPane layoutY="464.0" prefHeight="426.0" prefWidth="759.0" style="-fx-background-color: #e4e4e4;" />
+      <AnchorPane layoutY="464.0" prefHeight="426.0" prefWidth="759.0" style="-fx-background-color: #e4e4e4;">
+         <children>
+            <AnchorPane layoutY="7.0" prefHeight="426.0" prefWidth="759.0" style="-fx-background-color: #808a8d;">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Program Management" textFill="#0c0a90">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtProgramName" layoutX="18.0" layoutY="65.0" prefHeight="39.0" prefWidth="185.0" promptText="Program Name">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtCredit" layoutX="226.0" layoutY="65.0" prefHeight="39.0" prefWidth="179.0" promptText="Credit Value">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </TextField>
+                  <Button layoutX="441.0" layoutY="65.0" mnemonicParsing="false" onAction="#saveProgramOnAction" prefHeight="39.0" prefWidth="121.0" text="Save Program">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Separator layoutX="25.0" layoutY="43.0" prefHeight="7.0" prefWidth="593.0" />
+                  <TextField fx:id="txtProgramSearch" layoutX="14.0" layoutY="120.0" prefHeight="39.0" prefWidth="731.0" promptText="Search Here">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </TextField>
+                  <Button layoutX="618.0" layoutY="34.0" mnemonicParsing="false" onAction="#newProgramOnAction" text="+ New Program">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <TableView fx:id="tblStudent1" layoutX="14.0" layoutY="179.0" prefHeight="224.0" prefWidth="731.0">
+                     <columns>
+                        <TableColumn prefWidth="155.0" text="#student ID" />
+                        <TableColumn prefWidth="211.0" text="Student Name" />
+                        <TableColumn prefWidth="175.0" text="Delete" />
+                        <TableColumn prefWidth="189.0" text="Contact Number" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
       <AnchorPane layoutX="769.0" layoutY="464.0" prefHeight="426.0" prefWidth="759.0" style="-fx-background-color: #e4e4e4;" />
    </children>
 </AnchorPane>
