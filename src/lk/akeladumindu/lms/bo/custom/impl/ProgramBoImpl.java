@@ -7,6 +7,7 @@ import lk.akeladumindu.lms.dto.ProgramDto;
 import lk.akeladumindu.lms.entity.Program;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class ProgramBoImpl implements ProgramBo {
 
@@ -17,5 +18,10 @@ public class ProgramBoImpl implements ProgramBo {
         program.setTitle(dto.getTitle());
         program.setCredit(dto.getCredits());
         programDao.save(program);
+    }
+
+    @Override
+    public List<Long> findAllStudentIds() {
+        return programDao.findAllProgramIds();
     }
 }
