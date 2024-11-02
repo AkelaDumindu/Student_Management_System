@@ -32,6 +32,9 @@ public class MainFormController {
     public TableColumn colContactNumber;
     public TableColumn colDelete;
     public TableColumn colSeeMore;
+    public Button btnStudentSave;
+
+    private StudentTm selectedStudentTm;
 
 
     public void initialize() throws SQLException, ClassNotFoundException {
@@ -42,6 +45,19 @@ public class MainFormController {
         colDelete.setCellValueFactory(new PropertyValueFactory<>("deleteBtn"));
         colSeeMore.setCellValueFactory(new PropertyValueFactory<>("seeMoreBtn"));
                 loadAllStudents();
+
+        //------------------------Listener---------------------
+        tblStudent.getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        selectedStudentTm = newValue;
+                        txtname.setText(newValue.getName());
+                        txtContact.setText(newValue.getContent());
+                        btnStudentSave.setText("Update Student");
+                    }
+                });
+        //------------------------Listener---------------------
             }
 
     private void loadAllStudents() throws SQLException, ClassNotFoundException {
@@ -83,16 +99,35 @@ public class MainFormController {
         dto.setName(txtname.getText());
         dto.setContact(txtContact.getText());
 
-        try{
-            studentBo.saveStudent(dto);
-            new Alert(Alert.AlertType.INFORMATION,"Student Saved!").show();
-            loadAllStudents();
-        } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR,"Try Again!").show();
+        if (btnStudentSave.getText().equals("Update Student")) {
+            if ( selectedStudentTm== null) {
+                new Alert(Alert.AlertType.ERROR, "Try Again").show();
+                return;
+            }
+            try {
+                dto.setId(selectedStudentTm.getId());
+                studentBo.updateStudent(dto);
+                new Alert(Alert.AlertType.INFORMATION, "Student Updated").show();
+                selectedStudentTm = null;
+                btnStudentSave.setText("Save Student");
+                loadAllStudents();
+            } catch (Exception e) {
+                new Alert(Alert.AlertType.ERROR, "Try Again").show();
+            }
+        } else {
+            try {
+                studentBo.saveStudent(dto);
+                new Alert(Alert.AlertType.INFORMATION, "Student Saved").show();
+                loadAllStudents();
+            } catch (Exception e) {
+                new Alert(Alert.AlertType.ERROR, "Try Again").show();
+            }}
+        }
+        public void newStudentOnAction(ActionEvent actionEvent) {
+            btnStudentSave.setText("Save Student");
+            selectedStudentTm = null;
         }
     }
 
 
 
-
-}

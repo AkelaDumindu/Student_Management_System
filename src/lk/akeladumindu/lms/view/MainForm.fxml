@@ -28,7 +28,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </TextField>
-            <Button layoutX="436.0" layoutY="65.0" mnemonicParsing="false" onAction="#onActionSaveStudent" prefHeight="39.0" prefWidth="121.0" text="Save Student">
+            <Button layoutX="436.0" layoutY="65.0" mnemonicParsing="false" onAction="#btnStudentSave" prefHeight="39.0" prefWidth="121.0" text="Save Student">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -39,7 +39,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </TextField>
-            <Button layoutX="618.0" layoutY="34.0" mnemonicParsing="false" text="+ New Student">
+            <Button fx:id="btnStudentSave" layoutX="618.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnSaveOnAction" text="+ New Student">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
