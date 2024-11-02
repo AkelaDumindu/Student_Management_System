@@ -1,5 +1,6 @@
 package lk.akeladumindu.lms.bo.custom.impl;
 
+import lk.akeladumindu.lms.bo.custom.StudentBo;
 import lk.akeladumindu.lms.dao.DaoFactory;
 import lk.akeladumindu.lms.dao.custom.StudentDao;
 import lk.akeladumindu.lms.dto.StudentDto;
@@ -7,9 +8,10 @@ import lk.akeladumindu.lms.entity.Student;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class StudentBoImpl {
+public class StudentBoImpl implements StudentBo {
 
     private final StudentDao studentDao = DaoFactory.getInstance().getDao(DaoFactory.DaoType.STUDENT);
 
@@ -18,6 +20,16 @@ public class StudentBoImpl {
         student.setName(dto.getName());
         student.setContact(dto.getContact());
         studentDao.save(student);
+
+    }
+
+    @Override
+    public List<StudentDto> findAllStudent() throws SQLException, ClassNotFoundException {
+        return Collections.emptyList();
+    }
+
+    @Override
+    public void deleteStudentById(long id) throws SQLException, ClassNotFoundException {
 
     }
 

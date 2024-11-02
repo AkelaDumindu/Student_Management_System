@@ -18,7 +18,7 @@ public class Student {
     private String contact;
 
 //*********************mapping******************************
-    @OneToOne(cascade = CascadeType.ALL,
+    @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "student",
             fetch = FetchType.EAGER)
     private Laptop laptop;
@@ -26,18 +26,23 @@ public class Student {
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "student", fetch = FetchType.EAGER)
     private List<Book> books = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "students")
-    private List<Program> programs = new ArrayList<>();
+    @OneToMany(mappedBy = "student")
+    private List<Registration> registrations =
+            new ArrayList<>();
 
-    public List<Program> getPrograms() {
-        return programs;
-    }
 
-    public void setPrograms(List<Program> programs) {
-        this.programs = programs;
-    }
 
     // *********************mapping******************************
+
+
+    public List<Registration> getRegistrations() {
+        return registrations;
+    }
+
+    public void setRegistrations(List<Registration> registrations) {
+        this.registrations = registrations;
+    }
+
     public Laptop getLaptop() {
         return laptop;
     }

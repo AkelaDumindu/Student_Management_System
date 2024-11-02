@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
@@ -55,7 +56,47 @@
             </TableView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="769.0" layoutY="7.0" prefHeight="426.0" prefWidth="759.0" style="-fx-background-color: #e4e4e4;" />
+      <AnchorPane layoutX="769.0" layoutY="7.0" prefHeight="426.0" prefWidth="759.0" style="-fx-background-color: #e4e4e4;">
+         <children>
+            <AnchorPane prefHeight="426.0" prefWidth="759.0" style="-fx-background-color: #808a8d;">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Laptop Management" textFill="#0c0a90">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtBrandName" layoutX="217.0" layoutY="65.0" prefHeight="39.0" prefWidth="185.0" promptText="Student Name" text="Brand">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </TextField>
+                  <Separator layoutX="25.0" layoutY="43.0" prefHeight="7.0" prefWidth="593.0" />
+                  <TextField fx:id="txtLapSearch" layoutX="14.0" layoutY="120.0" prefHeight="39.0" prefWidth="731.0" promptText="Search Here">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="btnLapSave" layoutX="618.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnSaveOnAction" text="+ New Laptop">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <TableView fx:id="tblLaptop" layoutX="14.0" layoutY="179.0" prefHeight="224.0" prefWidth="731.0">
+                     <columns>
+                        <TableColumn fx:id="colLapId" prefWidth="179.0" text="#lapId" />
+                        <TableColumn fx:id="colLapName" prefWidth="305.0" text="Student Name" />
+                        <TableColumn fx:id="colLapDelete" prefWidth="246.0" text="Delete" />
+                     </columns>
+                  </TableView>
+                  <ComboBox fx:id="cmdStudent" layoutX="14.0" layoutY="69.0" prefWidth="150.0" promptText="Student" />
+                  <Button layoutX="454.0" layoutY="65.0" mnemonicParsing="false" onAction="#btnLaptopSave" prefHeight="39.0" prefWidth="121.0" text="Save Laptop">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
       <AnchorPane layoutY="464.0" prefHeight="426.0" prefWidth="759.0" style="-fx-background-color: #e4e4e4;" />
       <AnchorPane layoutX="769.0" layoutY="464.0" prefHeight="426.0" prefWidth="759.0" style="-fx-background-color: #e4e4e4;" />
    </children>

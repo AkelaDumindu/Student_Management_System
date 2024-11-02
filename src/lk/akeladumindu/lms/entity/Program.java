@@ -17,19 +17,20 @@ public class Program {
     private int credit;
 
     //*********************mapping******************************
-    @ManyToMany
-    @JoinTable(name = "registration", joinColumns = @JoinColumn(name = "program_id"),inverseJoinColumns = @JoinColumn(name = "student_id"))
-    private List<Student> students = new ArrayList<>();
+    @OneToMany(mappedBy = "program")
+    private List<Registration> reegistration = new ArrayList<>();
 
-    public List<Student> getStudents() {
-        return students;
-    }
 
-    public void setStudents(List<Student> students) {
-        this.students = students;
-    }
 // *********************mapping******************************
 
+
+    public List<Registration> getReegistration() {
+        return reegistration;
+    }
+
+    public void setReegistration(List<Registration> reegistration) {
+        this.reegistration = reegistration;
+    }
 
     public long getId() {
         return id;

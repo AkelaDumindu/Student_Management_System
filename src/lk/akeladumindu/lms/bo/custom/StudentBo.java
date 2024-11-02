@@ -15,4 +15,6 @@ public interface StudentBo {
     public void deleteStudentById(long id) throws SQLException, ClassNotFoundException;
 
     public void updateStudent(StudentDto dto) throws SQLException, ClassNotFoundException;
+
+
 }

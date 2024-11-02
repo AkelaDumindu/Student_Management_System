@@ -33,8 +33,17 @@ public class MainFormController {
     public TableColumn colDelete;
     public TableColumn colSeeMore;
     public Button btnStudentSave;
+    public TextField txtBrandName;
+    public TextField txtSearch;
+    public Button btnLapSave;
+    public TableView tblLaptop;
+    public TableColumn colLapId;
+    public TableColumn colLapName;
+    public TableColumn colLapDelete;
+    public ComboBox cmdStudent;
+    public TextField txtLapSearch;
 
-    private StudentTm selectedStudentTm;
+//    private StudentTm selectedStudentTm;
 
 
     public void initialize() throws SQLException, ClassNotFoundException {
@@ -45,6 +54,9 @@ public class MainFormController {
         colDelete.setCellValueFactory(new PropertyValueFactory<>("deleteBtn"));
         colSeeMore.setCellValueFactory(new PropertyValueFactory<>("seeMoreBtn"));
                 loadAllStudents();
+                loadAllStudentsForLaptopSection();
+
+
 
         //------------------------Listener---------------------
         tblStudent.getSelectionModel()
@@ -58,7 +70,20 @@ public class MainFormController {
                     }
                 });
         //------------------------Listener---------------------
+
+
             }
+
+    private void loadAllStudentsForLaptopSection() throws SQLException, ClassNotFoundException {
+        ObservableList<Long> obList = FXCollections.observableArrayList();
+        for (StudentDto dto:studentBo.findAllStudent()
+        ) {
+            obList.add(dto.getId());
+        }
+        cmdStudent.setItems(obList);
+    }
+
+    private StudentTm selectedStudentTm = null;
 
     private void loadAllStudents() throws SQLException, ClassNotFoundException {
         ObservableList<StudentTm> tmList = FXCollections.observableArrayList();
@@ -93,8 +118,20 @@ public class MainFormController {
     }
 
 
-    public void onActionSaveStudent(ActionEvent actionEvent) {
+//    public void onActionSaveStudent(ActionEvent actionEvent) {
+//
+//
+//        }
+//        public void newStudentOnAction(ActionEvent actionEvent) {
+//
+//        }
 
+    public void btnSaveOnAction(ActionEvent actionEvent) {
+        btnStudentSave.setText("Save Student");
+        selectedStudentTm = null;
+    }
+
+    public void btnStudentSave(ActionEvent actionEvent) {
         StudentDto dto = new StudentDto();
         dto.setName(txtname.getText());
         dto.setContact(txtContact.getText());
@@ -111,6 +148,7 @@ public class MainFormController {
                 selectedStudentTm = null;
                 btnStudentSave.setText("Save Student");
                 loadAllStudents();
+                loadAllStudentsForLaptopSection();
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, "Try Again").show();
             }
@@ -122,12 +160,11 @@ public class MainFormController {
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, "Try Again").show();
             }}
-        }
-        public void newStudentOnAction(ActionEvent actionEvent) {
-            btnStudentSave.setText("Save Student");
-            selectedStudentTm = null;
-        }
     }
+
+    public void btnLaptopSave(ActionEvent actionEvent) {
+    }
+}
 
 
 

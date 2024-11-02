@@ -1,9 +1,6 @@
 package lk.akeladumindu.lms.util;
 
-import lk.akeladumindu.lms.entity.Book;
-import lk.akeladumindu.lms.entity.Laptop;
-import lk.akeladumindu.lms.entity.Program;
-import lk.akeladumindu.lms.entity.Student;
+import lk.akeladumindu.lms.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -36,6 +33,7 @@ public class HibernateUtil {
                 .addAnnotatedClass(Program.class)
                 .addAnnotatedClass(Laptop.class)
                 .addAnnotatedClass(Book.class)
+                .addAnnotatedClass(Registration.class)
                 .getMetadataBuilder()
                 .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
                 .build();
