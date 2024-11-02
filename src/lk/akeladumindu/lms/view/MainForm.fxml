@@ -44,12 +44,13 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <TableView layoutX="14.0" layoutY="179.0" prefHeight="224.0" prefWidth="731.0">
+            <TableView fx:id="tblStudent" layoutX="14.0" layoutY="179.0" prefHeight="224.0" prefWidth="731.0">
               <columns>
-                <TableColumn prefWidth="149.99996948242188" text="#student ID" />
-                <TableColumn prefWidth="186.99996948242188" text="Student Name" />
-                  <TableColumn prefWidth="200.0" text="Contact Number" />
-                  <TableColumn prefWidth="193.0" text="Option" />
+                <TableColumn fx:id="colStudentId" prefWidth="126.0" text="#student ID" />
+                <TableColumn fx:id="colStudentName" prefWidth="149.99996948242188" text="Student Name" />
+                  <TableColumn fx:id="colContactNumber" prefWidth="161.0" text="Contact Number" />
+                  <TableColumn fx:id="colDelete" prefWidth="144.0" text="Delete" />
+                  <TableColumn fx:id="colSeeMore" prefWidth="146.0" text="See More" />
               </columns>
             </TableView>
          </children>
