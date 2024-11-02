@@ -7,7 +7,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.akeladumindu.lms.bo.BoFactory;
+import lk.akeladumindu.lms.bo.custom.LaptopBo;
 import lk.akeladumindu.lms.bo.custom.StudentBo;
+import lk.akeladumindu.lms.dto.CreateLaptopDto;
 import lk.akeladumindu.lms.dto.StudentDto;
 import lk.akeladumindu.lms.view.tm.StudentTm;
 import java.util.Optional;
@@ -26,6 +28,7 @@ public class MainFormController {
 
 //    private final StudentBo studentBo = BoFactory.getInstance().getBo(BoFactory.BoType.STUDENT);
             private final StudentBo studentBo = BoFactory.getInstance().getBo(BoFactory.BoType.STUDENT);
+            private final LaptopBo laptopBo = BoFactory.getInstance().getBo(BoFactory.BoType.LAPTOP);
     public TableView<StudentTm> tblStudent;
     public TableColumn colStudentId;
     public TableColumn colStudentName;
@@ -163,6 +166,22 @@ public class MainFormController {
     }
 
     public void btnLaptopSave(ActionEvent actionEvent) {
+
+        try {
+            laptopBo.saveLaptop(
+                    new CreateLaptopDto(
+                            (Long) cmdStudent.getValue(),
+                            txtBrandName.getText()
+                    )
+            );
+            new Alert(Alert.AlertType.INFORMATION, "Laptop Saved").show();
+            loadAllLaptops();
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "Try Again").show();
+        }
+    }
+
+    private void loadAllLaptops() {
     }
 }
 

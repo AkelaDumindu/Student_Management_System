@@ -1,5 +1,6 @@
 package lk.akeladumindu.lms.dao;
 
+import lk.akeladumindu.lms.dao.custom.impl.LaptopDaoImpl;
 import lk.akeladumindu.lms.dao.custom.impl.StudentDaoImpl;
 
 public class DaoFactory {
@@ -23,7 +24,7 @@ public class DaoFactory {
            case BOOK:
                return null;
            case LAPTOP:
-               return null;
+               return (T) new LaptopDaoImpl();
            case PROGRAM:
                return null;
            default:

@@ -1,5 +1,6 @@
 package lk.akeladumindu.lms.bo;
 
+import lk.akeladumindu.lms.bo.custom.impl.LaptopBoImpl;
 import lk.akeladumindu.lms.bo.custom.impl.StudentBoImpl;
 
 public class BoFactory {
@@ -21,7 +22,7 @@ public class BoFactory {
             case BOOK:
                 return null;
             case LAPTOP:
-                return null;
+                return (T)new LaptopBoImpl();
             case PROGRAM:
                 return null;
             default:
